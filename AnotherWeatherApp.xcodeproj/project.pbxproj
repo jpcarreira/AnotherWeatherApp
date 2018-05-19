@@ -8,22 +8,32 @@
 
 /* Begin PBXBuildFile section */
 		6243539220AEE09C00FFD47A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6243539120AEE09C00FFD47A /* AppDelegate.swift */; };
-		6243539420AEE09C00FFD47A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6243539320AEE09C00FFD47A /* ViewController.swift */; };
 		6243539720AEE09C00FFD47A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6243539520AEE09C00FFD47A /* Main.storyboard */; };
 		6243539A20AEE09C00FFD47A /* AnotherWeatherApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6243539820AEE09C00FFD47A /* AnotherWeatherApp.xcdatamodeld */; };
 		6243539C20AEE09E00FFD47A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6243539B20AEE09E00FFD47A /* Assets.xcassets */; };
 		6243539F20AEE09E00FFD47A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6243539D20AEE09E00FFD47A /* LaunchScreen.storyboard */; };
+		624353A720AEF97F00FFD47A /* Requirements in Resources */ = {isa = PBXBuildFile; fileRef = 624353A620AEF97F00FFD47A /* Requirements */; };
+		624353A920AEFB6000FFD47A /* LocationsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624353A820AEFB6000FFD47A /* LocationsTableViewController.swift */; };
+		624353AB20AEFC9300FFD47A /* SearchLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624353AA20AEFC9300FFD47A /* SearchLocationViewController.swift */; };
+		624353AD20AF1F3A00FFD47A /* LocationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624353AC20AF1F3A00FFD47A /* LocationTableViewCell.swift */; };
+		624353B320AF272C00FFD47A /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624353B220AF272C00FFD47A /* LocationService.swift */; };
+		624353B520B0BE9F00FFD47A /* SearchLocationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624353B420B0BE9F00FFD47A /* SearchLocationTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		6243538E20AEE09C00FFD47A /* AnotherWeatherApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AnotherWeatherApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6243539120AEE09C00FFD47A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		6243539320AEE09C00FFD47A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		6243539620AEE09C00FFD47A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		6243539920AEE09C00FFD47A /* AnotherWeatherApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = AnotherWeatherApp.xcdatamodel; sourceTree = "<group>"; };
 		6243539B20AEE09E00FFD47A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6243539E20AEE09E00FFD47A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		624353A020AEE09E00FFD47A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		624353A620AEF97F00FFD47A /* Requirements */ = {isa = PBXFileReference; lastKnownFileType = text; path = Requirements; sourceTree = "<group>"; };
+		624353A820AEFB6000FFD47A /* LocationsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationsTableViewController.swift; sourceTree = "<group>"; };
+		624353AA20AEFC9300FFD47A /* SearchLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchLocationViewController.swift; sourceTree = "<group>"; };
+		624353AC20AF1F3A00FFD47A /* LocationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationTableViewCell.swift; sourceTree = "<group>"; };
+		624353B220AF272C00FFD47A /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
+		624353B420B0BE9F00FFD47A /* SearchLocationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchLocationTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +66,52 @@
 		6243539020AEE09C00FFD47A /* AnotherWeatherApp */ = {
 			isa = PBXGroup;
 			children = (
+				624353B120AF270E00FFD47A /* Services */,
+				624353AE20AF269200FFD47A /* Stories */,
 				6243539120AEE09C00FFD47A /* AppDelegate.swift */,
-				6243539320AEE09C00FFD47A /* ViewController.swift */,
 				6243539520AEE09C00FFD47A /* Main.storyboard */,
-				6243539B20AEE09E00FFD47A /* Assets.xcassets */,
 				6243539D20AEE09E00FFD47A /* LaunchScreen.storyboard */,
+				6243539B20AEE09E00FFD47A /* Assets.xcassets */,
 				624353A020AEE09E00FFD47A /* Info.plist */,
 				6243539820AEE09C00FFD47A /* AnotherWeatherApp.xcdatamodeld */,
+				624353A620AEF97F00FFD47A /* Requirements */,
 			);
 			path = AnotherWeatherApp;
+			sourceTree = "<group>";
+		};
+		624353AE20AF269200FFD47A /* Stories */ = {
+			isa = PBXGroup;
+			children = (
+				624353AF20AF269A00FFD47A /* Favourite locations */,
+				624353B020AF26A300FFD47A /* Search locations */,
+			);
+			name = Stories;
+			sourceTree = "<group>";
+		};
+		624353AF20AF269A00FFD47A /* Favourite locations */ = {
+			isa = PBXGroup;
+			children = (
+				624353A820AEFB6000FFD47A /* LocationsTableViewController.swift */,
+				624353AC20AF1F3A00FFD47A /* LocationTableViewCell.swift */,
+			);
+			name = "Favourite locations";
+			sourceTree = "<group>";
+		};
+		624353B020AF26A300FFD47A /* Search locations */ = {
+			isa = PBXGroup;
+			children = (
+				624353AA20AEFC9300FFD47A /* SearchLocationViewController.swift */,
+				624353B420B0BE9F00FFD47A /* SearchLocationTableViewCell.swift */,
+			);
+			name = "Search locations";
+			sourceTree = "<group>";
+		};
+		624353B120AF270E00FFD47A /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				624353B220AF272C00FFD47A /* LocationService.swift */,
+			);
+			name = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -125,6 +172,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				624353A720AEF97F00FFD47A /* Requirements in Resources */,
 				6243539F20AEE09E00FFD47A /* LaunchScreen.storyboard in Resources */,
 				6243539C20AEE09E00FFD47A /* Assets.xcassets in Resources */,
 				6243539720AEE09C00FFD47A /* Main.storyboard in Resources */,
@@ -138,9 +186,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6243539420AEE09C00FFD47A /* ViewController.swift in Sources */,
 				6243539220AEE09C00FFD47A /* AppDelegate.swift in Sources */,
+				624353AD20AF1F3A00FFD47A /* LocationTableViewCell.swift in Sources */,
+				624353B320AF272C00FFD47A /* LocationService.swift in Sources */,
+				624353B520B0BE9F00FFD47A /* SearchLocationTableViewCell.swift in Sources */,
 				6243539A20AEE09C00FFD47A /* AnotherWeatherApp.xcdatamodeld in Sources */,
+				624353A920AEFB6000FFD47A /* LocationsTableViewController.swift in Sources */,
+				624353AB20AEFC9300FFD47A /* SearchLocationViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -285,6 +337,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 757P28B37C;
 				INFOPLIST_FILE = AnotherWeatherApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -302,6 +355,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 757P28B37C;
 				INFOPLIST_FILE = AnotherWeatherApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

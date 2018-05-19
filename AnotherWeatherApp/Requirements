@@ -1,0 +1,23 @@
+The task is to create a simple but polished app for displaying weather information for your
+favorite locations using the iOS 11 SDK frameworks and storyboards only. Avoid using third-party
+libraries and frameworks for this task. Your views must use auto-layout and support both portrait
+and landscape.
+
+The specifications for the app is as follows:
+- At first launch an empty view is shown hinting the user to add a location.
+- The user may then tap a navigation bar item to show a modal search view allowing the user to
+search for and select a location.
+- Tapping on one of the search results in the search view will add it as a favorite location in the
+main view and the search view is automatically dismissed (user should also be able to tap cancel).
+- The favorite locations show the name of the location along with weather information such as
+temperature, weather condition (text and icon) and wind speed/direction.
+- The user should be able to edit the list of locations by tapping an edit button to delete one or
+more locations, and also change the order of those locations. A location may also be deleted with a
+swipe gesture revealing a delete option.
+- The user may pull the view down to refresh the weather information.
+
+Note:
+- You may use either Swift or Objective-C.
+- The weather locations, weather data, and order of locations need to be persisted in some way.
+- Use the following third-party weather API for retreiving weather data and locations:
+https://www.apixu.com/
