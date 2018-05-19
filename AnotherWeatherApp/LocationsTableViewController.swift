@@ -14,14 +14,30 @@ final class LocationsViewController: UITableViewController {
     private static let noLocationCellIdentifier = "NoLocationCell"
     private static let locationCellIdentifier = "LocationCell"
     
+    private var weatherData = [WeatherItem]() {
+        didSet {
+            tableView.reloadData()
+        }
+    }
+    
     override func tableView(
             _ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return tableView.dequeueReusableCell(
-            withIdentifier: LocationsViewController.noLocationCellIdentifier, for: indexPath)
+        if weatherData.count == 0 {
+            return tableView.dequeueReusableCell(
+                withIdentifier: LocationsViewController.noLocationCellIdentifier, for: indexPath)
+        } else {
+            let cell = tableView.dequeueReusableCell(
+                withIdentifier: LocationsViewController.locationCellIdentifier, for: indexPath)
+                as! LocationTableViewCell
+            
+            cell.location.text = weatherData[indexPath.row].location.name
+            
+            return cell
+        }
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return weatherData.count == 0 ? 1 : weatherData.count
     }
     
     override func tableView(
@@ -44,6 +60,6 @@ final class LocationsViewController: UITableViewController {
 extension LocationsViewController: SearchLocationViewControllerDelegate {
     
     func locationItemWasSelected(location: LocationItem) {
-        // TODO:
+        weatherData.append(WeatherItem(location: location))
     }
 }
