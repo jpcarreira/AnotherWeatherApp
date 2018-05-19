@@ -20,6 +20,7 @@
 		624353B520B0BE9F00FFD47A /* SearchLocationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624353B420B0BE9F00FFD47A /* SearchLocationTableViewCell.swift */; };
 		62B6041520B0C20A00396889 /* LocationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B6041420B0C20A00396889 /* LocationItem.swift */; };
 		62B6041720B0CB0700396889 /* WeatherItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B6041620B0CB0700396889 /* WeatherItem.swift */; };
+		62B6041B20B0CFDF00396889 /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B6041A20B0CFDF00396889 /* HTTPClient.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		624353B420B0BE9F00FFD47A /* SearchLocationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchLocationTableViewCell.swift; sourceTree = "<group>"; };
 		62B6041420B0C20A00396889 /* LocationItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationItem.swift; sourceTree = "<group>"; };
 		62B6041620B0CB0700396889 /* WeatherItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherItem.swift; sourceTree = "<group>"; };
+		62B6041A20B0CFDF00396889 /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,10 +116,27 @@
 		624353B120AF270E00FFD47A /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				62B6041820B0CF0800396889 /* Location */,
+				62B6041920B0CF2200396889 /* Networking */,
+			);
+			name = Services;
+			sourceTree = "<group>";
+		};
+		62B6041820B0CF0800396889 /* Location */ = {
+			isa = PBXGroup;
+			children = (
 				62B6041420B0C20A00396889 /* LocationItem.swift */,
 				624353B220AF272C00FFD47A /* LocationService.swift */,
 			);
-			name = Services;
+			name = Location;
+			sourceTree = "<group>";
+		};
+		62B6041920B0CF2200396889 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				62B6041A20B0CFDF00396889 /* HTTPClient.swift */,
+			);
+			name = Networking;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -195,6 +214,7 @@
 				6243539220AEE09C00FFD47A /* AppDelegate.swift in Sources */,
 				624353AD20AF1F3A00FFD47A /* LocationTableViewCell.swift in Sources */,
 				62B6041520B0C20A00396889 /* LocationItem.swift in Sources */,
+				62B6041B20B0CFDF00396889 /* HTTPClient.swift in Sources */,
 				624353B320AF272C00FFD47A /* LocationService.swift in Sources */,
 				624353B520B0BE9F00FFD47A /* SearchLocationTableViewCell.swift in Sources */,
 				6243539A20AEE09C00FFD47A /* AnotherWeatherApp.xcdatamodeld in Sources */,

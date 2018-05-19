@@ -9,7 +9,7 @@
 import MapKit
 
 
-final class LocationService {
+struct LocationService {
     
     static func lookFor(
             _ place: String?,

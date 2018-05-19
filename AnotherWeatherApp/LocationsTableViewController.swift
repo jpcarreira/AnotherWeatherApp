@@ -61,5 +61,14 @@ extension LocationsViewController: SearchLocationViewControllerDelegate {
     
     func locationItemWasSelected(location: LocationItem) {
         weatherData.append(WeatherItem(location: location))
+        
+        // TODO: WIP
+        print(location.latitude)
+        print(location.longitude)
+        
+        HTTPClient.get(from: NSURL(string: "https://api.apixu.com/v1/current.json?key=af6d9b9891ce410c868190219181705&q=\(location.latitude),\(location.longitude)") as! URL) { (json, error) in
+            
+            print(json)
+        }
     }
 }
