@@ -8,11 +8,12 @@
 
 import MapKit
 
+
 final class LocationService {
     
     static func lookFor(
             _ place: String?,
-            completion: @escaping (_ success: Bool, _ results: [String]?) -> Void ){
+            completion: @escaping (_ success: Bool, _ results: [LocationItem]?) -> Void ){
         guard let _ = place else {
            return
         }
@@ -29,10 +30,15 @@ final class LocationService {
                 print("No matches found")
                 completion(false, nil)
             } else {
-                var locations = [String]()
+                var locations = [LocationItem]()
                 for item in response!.mapItems {
                     if let locationName = item.name {
-                        locations.append(locationName)
+                        let locationItem = LocationItem(
+                            name: locationName,
+                            latitude: item.placemark.coordinate.latitude,
+                            longitude: item.placemark.coordinate.longitude)
+                        
+                        locations.append(locationItem)
                     }
                 }
                 completion(true, locations)

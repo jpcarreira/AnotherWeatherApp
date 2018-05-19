@@ -18,6 +18,7 @@
 		624353AD20AF1F3A00FFD47A /* LocationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624353AC20AF1F3A00FFD47A /* LocationTableViewCell.swift */; };
 		624353B320AF272C00FFD47A /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624353B220AF272C00FFD47A /* LocationService.swift */; };
 		624353B520B0BE9F00FFD47A /* SearchLocationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624353B420B0BE9F00FFD47A /* SearchLocationTableViewCell.swift */; };
+		62B6041520B0C20A00396889 /* LocationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B6041420B0C20A00396889 /* LocationItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		624353AC20AF1F3A00FFD47A /* LocationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationTableViewCell.swift; sourceTree = "<group>"; };
 		624353B220AF272C00FFD47A /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 		624353B420B0BE9F00FFD47A /* SearchLocationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchLocationTableViewCell.swift; sourceTree = "<group>"; };
+		62B6041420B0C20A00396889 /* LocationItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +111,7 @@
 		624353B120AF270E00FFD47A /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				62B6041420B0C20A00396889 /* LocationItem.swift */,
 				624353B220AF272C00FFD47A /* LocationService.swift */,
 			);
 			name = Services;
@@ -188,6 +191,7 @@
 			files = (
 				6243539220AEE09C00FFD47A /* AppDelegate.swift in Sources */,
 				624353AD20AF1F3A00FFD47A /* LocationTableViewCell.swift in Sources */,
+				62B6041520B0C20A00396889 /* LocationItem.swift in Sources */,
 				624353B320AF272C00FFD47A /* LocationService.swift in Sources */,
 				624353B520B0BE9F00FFD47A /* SearchLocationTableViewCell.swift in Sources */,
 				6243539A20AEE09C00FFD47A /* AnotherWeatherApp.xcdatamodeld in Sources */,

@@ -14,7 +14,7 @@ final class SearchLocationViewController: UITableViewController {
     private static let cellIdentifier = "LocationSearchCell"
     
     // data source for the table view
-    var foundLocations = [String]() {
+    var foundLocations = [LocationItem]() {
         didSet {
            tableView.reloadData()
         }
@@ -45,7 +45,7 @@ final class SearchLocationViewController: UITableViewController {
             SearchLocationTableViewCell
         
         if foundLocations.indices.contains(indexPath.row) {
-            cell.city.text = foundLocations[indexPath.row]
+            cell.city.text = foundLocations[indexPath.row].name
         }
         
         return cell
@@ -63,7 +63,6 @@ extension SearchLocationViewController: UISearchResultsUpdating {
         if let searchText = searchController.searchBar.text, searchText.count > 2 {
             LocationService.lookFor(searchText) { (success, locations) in
                 if success, locations != nil {
-                    print(locations!)
                     self.foundLocations = locations!
                 } else {
                     self.foundLocations = []
