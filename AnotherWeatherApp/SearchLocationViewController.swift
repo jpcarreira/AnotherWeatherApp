@@ -9,9 +9,17 @@
 import UIKit
 
 
+protocol SearchLocationViewControllerDelegate: class {
+    
+    func locationItemWasSelected(location: LocationItem)
+}
+
+
 final class SearchLocationViewController: UITableViewController {
     
     private static let cellIdentifier = "LocationSearchCell"
+    
+    weak var delegate: SearchLocationViewControllerDelegate?
     
     // data source for the table view
     var foundLocations = [LocationItem]() {
@@ -51,7 +59,19 @@ final class SearchLocationViewController: UITableViewController {
         return cell
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if foundLocations.indices.contains(indexPath.row) {
+            delegate?.locationItemWasSelected(location: foundLocations[indexPath.row])
+            searchController.isActive = false
+            dismissSearchLocationViewController()
+        }
+    }
+    
     @IBAction func closeButtonIsPressed(_ sender: UIBarButtonItem) {
+        dismissSearchLocationViewController()
+    }
+    
+    private func dismissSearchLocationViewController() {
         dismiss(animated: true, completion: nil)
     }
 }

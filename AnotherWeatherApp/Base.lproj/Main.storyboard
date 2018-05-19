@@ -104,7 +104,7 @@
                     <navigationItem key="navigationItem" title="Another Weather App" id="Xsm-SE-meN">
                         <barButtonItem key="rightBarButtonItem" systemItem="search" id="Ivl-0W-oLH">
                             <connections>
-                                <segue destination="5Ru-QA-64A" kind="presentation" id="bn5-QP-1mI"/>
+                                <segue destination="5Ru-QA-64A" kind="presentation" identifier="SearchLocationSegue" id="bn5-QP-1mI"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

@@ -28,4 +28,22 @@ final class LocationsViewController: UITableViewController {
             _ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 120.0
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "SearchLocationSegue" {
+            let navigationController = segue.destination as! UINavigationController
+            if let searchLocationViewController =
+                    navigationController.viewControllers.first as? SearchLocationViewController {
+                searchLocationViewController.delegate = self
+            }
+        }
+    }
+}
+
+
+extension LocationsViewController: SearchLocationViewControllerDelegate {
+    
+    func locationItemWasSelected(location: LocationItem) {
+        // TODO:
+    }
 }
