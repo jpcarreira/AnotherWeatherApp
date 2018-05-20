@@ -20,7 +20,7 @@ struct ApixuAPI {
         HTTPClient.get(from: buildUrl(given: location)) { (json, error) in
             if error == nil {
                 do {
-                    let data = try JSONSerialization.data(withJSONObject: json, options: [])
+                    let data = try JSONSerialization.data(withJSONObject: json as Any, options: [])
                     if let string = String(data: data, encoding: String.Encoding.utf8)?.data(using: .utf8) {
                         let weather = try JSONDecoder().decode(WeatherResponse.self, from: string)
                         completionHandler(true, weather)

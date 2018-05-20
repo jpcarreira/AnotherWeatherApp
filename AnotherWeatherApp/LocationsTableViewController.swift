@@ -21,10 +21,11 @@ final class LocationsViewController: UITableViewController {
         }
     }
     
-    private func updateWeatherInformation() {
-        for location in favouriteLocations {
-            location.updateWeatherCondition()
-        }
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        refreshControl?.addTarget(
+            self, action: #selector(refreshWeatherData), for: UIControlEvents.valueChanged)
     }
     
     override func tableView(
@@ -71,6 +72,17 @@ final class LocationsViewController: UITableViewController {
                 searchLocationViewController.delegate = self
             }
         }
+    }
+    
+    private func updateWeatherInformation() {
+        for location in favouriteLocations {
+            location.updateWeatherCondition()
+        }
+    }
+    
+    @objc private func refreshWeatherData() {
+        updateWeatherInformation()
+        refreshControl?.endRefreshing()
     }
 }
 
