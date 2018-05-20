@@ -24,16 +24,15 @@ final class WeatherItem {
     }
     
     func updateWeatherCondition() {
-        ApixuAPI.getCurrentWeather(for: location) { success in
-            if success {
-                // TODO: fake data
+        ApixuAPI.getCurrentWeather(for: location) { success, weatherResponse in
+            if success, let weatherResponse = weatherResponse {
                 let weatherCondition = WeatherCondition(
-                    summary: "good",
-                    windSpeed: 10,
-                    windDirection: "SE",
-                    temperature: 14)
+                    summary: weatherResponse.condition,
+                    windSpeed: weatherResponse.windSpeed,
+                    windDirection: weatherResponse.windDirection,
+                    temperature: weatherResponse.temperature)
                 self.weather = weatherCondition
-                
+    
                 self.delegate?.weatherWasUpdated(for: self)
             }
         }
@@ -43,7 +42,7 @@ final class WeatherItem {
 
 struct WeatherCondition {
     let summary: String
-    let windSpeed: Int
+    let windSpeed: Double
     let windDirection: String
     let temperature: Int
 }
