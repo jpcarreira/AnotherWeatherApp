@@ -14,15 +14,22 @@ final class LocationsViewController: UITableViewController {
     private static let noLocationCellIdentifier = "NoLocationCell"
     private static let locationCellIdentifier = "LocationCell"
     
-    private var weatherData = [WeatherItem]() {
+    private var favouriteLocations = [WeatherItem]() {
         didSet {
             tableView.reloadData()
+            updateWeatherInformation()
+        }
+    }
+    
+    private func updateWeatherInformation() {
+        for location in favouriteLocations {
+            location.updateWeatherCondition()
         }
     }
     
     override func tableView(
             _ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if weatherData.count == 0 {
+        if favouriteLocations.count == 0 {
             return tableView.dequeueReusableCell(
                 withIdentifier: LocationsViewController.noLocationCellIdentifier, for: indexPath)
         } else {
@@ -30,14 +37,25 @@ final class LocationsViewController: UITableViewController {
                 withIdentifier: LocationsViewController.locationCellIdentifier, for: indexPath)
                 as! LocationTableViewCell
             
-            cell.location.text = weatherData[indexPath.row].location.name
+            let weatherDataForLocation = favouriteLocations[indexPath.row]
+        
+            cell.location.text = weatherDataForLocation.location.name
+            if let weather = weatherDataForLocation.weather {
+                cell.weatherDescription.text = weather.summary
+                cell.wind.text = "\(weather.windDirection) \(weather.windSpeed) km/hr"
+                cell.temperature.text = "\(weather.temperature) ºC"
+            } else {
+                cell.weatherDescription.text = "Unknown condition"
+                cell.wind.text = ""
+                cell.temperature.text = ""
+            }
             
             return cell
         }
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return weatherData.count == 0 ? 1 : weatherData.count
+        return favouriteLocations.count == 0 ? 1 : favouriteLocations.count
     }
     
     override func tableView(
@@ -60,15 +78,15 @@ final class LocationsViewController: UITableViewController {
 extension LocationsViewController: SearchLocationViewControllerDelegate {
     
     func locationItemWasSelected(location: LocationItem) {
-        weatherData.append(WeatherItem(location: location))
-        
-        // TODO: WIP
-        print(location.latitude)
-        print(location.longitude)
-        
-        HTTPClient.get(from: NSURL(string: "https://api.apixu.com/v1/current.json?key=af6d9b9891ce410c868190219181705&q=\(location.latitude),\(location.longitude)") as! URL) { (json, error) in
-            
-            print(json)
-        }
+        let weatherItem = WeatherItem(location: location)
+        weatherItem.delegate = self
+        favouriteLocations.append(weatherItem)
+    }
+}
+
+
+extension LocationsViewController: WeatherItemDelegate {
+    func weatherWasUpdated(for item: WeatherItem) {
+        tableView.reloadData()
     }
 }

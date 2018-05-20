@@ -21,6 +21,7 @@
 		62B6041520B0C20A00396889 /* LocationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B6041420B0C20A00396889 /* LocationItem.swift */; };
 		62B6041720B0CB0700396889 /* WeatherItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B6041620B0CB0700396889 /* WeatherItem.swift */; };
 		62B6041B20B0CFDF00396889 /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B6041A20B0CFDF00396889 /* HTTPClient.swift */; };
+		62B6041D20B1A26C00396889 /* ApixuAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B6041C20B1A26C00396889 /* ApixuAPI.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		62B6041420B0C20A00396889 /* LocationItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationItem.swift; sourceTree = "<group>"; };
 		62B6041620B0CB0700396889 /* WeatherItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherItem.swift; sourceTree = "<group>"; };
 		62B6041A20B0CFDF00396889 /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
+		62B6041C20B1A26C00396889 /* ApixuAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApixuAPI.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,6 +136,7 @@
 		62B6041920B0CF2200396889 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				62B6041C20B1A26C00396889 /* ApixuAPI.swift */,
 				62B6041A20B0CFDF00396889 /* HTTPClient.swift */,
 			);
 			name = Networking;
@@ -212,6 +215,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6243539220AEE09C00FFD47A /* AppDelegate.swift in Sources */,
+				62B6041D20B1A26C00396889 /* ApixuAPI.swift in Sources */,
 				624353AD20AF1F3A00FFD47A /* LocationTableViewCell.swift in Sources */,
 				62B6041520B0C20A00396889 /* LocationItem.swift in Sources */,
 				62B6041B20B0CFDF00396889 /* HTTPClient.swift in Sources */,
