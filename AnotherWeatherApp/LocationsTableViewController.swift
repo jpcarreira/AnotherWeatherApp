@@ -11,18 +11,20 @@ import UIKit
 
 final class LocationsViewController: UITableViewController {
 
-    private static let noLocationCellIdentifier = "NoLocationCell"
     private static let locationCellIdentifier = "LocationCell"
     
     private var favouriteLocations = [WeatherItem]() {
         didSet {
-            tableView.reloadData()
-            updateWeatherInformation()
+            if favouriteLocations.count == 0 {
+                // TODO: show view hiting to search for locations
+            }
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        navigationItem.leftBarButtonItem = editButtonItem
         
         refreshControl?.addTarget(
             self, action: #selector(refreshWeatherData), for: UIControlEvents.valueChanged)
@@ -30,33 +32,28 @@ final class LocationsViewController: UITableViewController {
     
     override func tableView(
             _ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if favouriteLocations.count == 0 {
-            return tableView.dequeueReusableCell(
-                withIdentifier: LocationsViewController.noLocationCellIdentifier, for: indexPath)
-        } else {
-            let cell = tableView.dequeueReusableCell(
-                withIdentifier: LocationsViewController.locationCellIdentifier, for: indexPath)
-                as! LocationTableViewCell
-            
-            let weatherDataForLocation = favouriteLocations[indexPath.row]
+        let cell = tableView.dequeueReusableCell(
+            withIdentifier: LocationsViewController.locationCellIdentifier, for: indexPath)
+            as! LocationTableViewCell
         
-            cell.location.text = weatherDataForLocation.location.name
-            if let weather = weatherDataForLocation.weather {
-                cell.weatherDescription.text = weather.summary
-                cell.wind.text = "\(weather.windDirection) \(weather.windSpeed) km/hr"
-                cell.temperature.text = "\(weather.temperature) ºC"
-            } else {
-                cell.weatherDescription.text = "Unknown condition"
-                cell.wind.text = ""
-                cell.temperature.text = ""
-            }
-            
-            return cell
+        let weatherDataForLocation = favouriteLocations[indexPath.row]
+    
+        cell.location.text = weatherDataForLocation.location.name
+        if let weather = weatherDataForLocation.weather {
+            cell.weatherDescription.text = weather.summary
+            cell.wind.text = "\(weather.windDirection) \(weather.windSpeed) km/hr"
+            cell.temperature.text = "\(weather.temperature) ºC"
+        } else {
+            cell.weatherDescription.text = "Unknown condition"
+            cell.wind.text = ""
+            cell.temperature.text = ""
         }
+        
+        return cell
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return favouriteLocations.count == 0 ? 1 : favouriteLocations.count
+        return favouriteLocations.count
     }
     
     override func tableView(
@@ -71,6 +68,19 @@ final class LocationsViewController: UITableViewController {
                     navigationController.viewControllers.first as? SearchLocationViewController {
                 searchLocationViewController.delegate = self
             }
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+
+    override func tableView(
+        _ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle,
+        forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            favouriteLocations.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
         }
     }
     
@@ -93,6 +103,9 @@ extension LocationsViewController: SearchLocationViewControllerDelegate {
         let weatherItem = WeatherItem(location: location)
         weatherItem.delegate = self
         favouriteLocations.append(weatherItem)
+        
+        tableView.reloadData()
+        updateWeatherInformation()
     }
 }
 
