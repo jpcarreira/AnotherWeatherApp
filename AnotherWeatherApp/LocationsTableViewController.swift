@@ -11,15 +11,10 @@ import UIKit
 
 final class LocationsViewController: UITableViewController {
 
+    private static let infoCellIdentifier = "InfoCell"
     private static let locationCellIdentifier = "LocationCell"
     
-    private var favouriteLocations = [WeatherItem]() {
-        didSet {
-            if favouriteLocations.count == 0 {
-                // TODO: show view hiting to search for locations
-            }
-        }
-    }
+    private var favouriteLocations = [WeatherItem]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,33 +27,50 @@ final class LocationsViewController: UITableViewController {
     
     override func tableView(
             _ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(
-            withIdentifier: LocationsViewController.locationCellIdentifier, for: indexPath)
-            as! LocationTableViewCell
-        
-        let weatherDataForLocation = favouriteLocations[indexPath.row]
-    
-        cell.location.text = weatherDataForLocation.location.name
-        if let weather = weatherDataForLocation.weather {
-            cell.weatherDescription.text = weather.summary
-            cell.wind.text = "\(weather.windDirection) \(weather.windSpeed) km/hr"
-            cell.temperature.text = "\(weather.temperature) ºC"
+        if indexPath.section == 0 {
+            let cell = tableView.dequeueReusableCell(
+                withIdentifier: LocationsViewController.infoCellIdentifier, for: indexPath)
+                as! InfoTableViewCell
+            
+            cell.infoLabel.text = favouriteLocations.count != 0 ?
+                "Last update: \(String.currentDate())" :
+                "No favourite locations found. " +
+                "You can look for a location using the search button"
+            
+            return cell
         } else {
-            cell.weatherDescription.text = "Unknown condition"
-            cell.wind.text = ""
-            cell.temperature.text = ""
+            let cell = tableView.dequeueReusableCell(
+                withIdentifier: LocationsViewController.locationCellIdentifier, for: indexPath)
+                as! LocationTableViewCell
+            
+            let weatherDataForLocation = favouriteLocations[indexPath.row]
+            
+            cell.location.text = weatherDataForLocation.location.name
+            if let weather = weatherDataForLocation.weather {
+                cell.weatherDescription.text = weather.summary
+                cell.wind.text = "\(weather.windDirection) \(weather.windSpeed) km/hr"
+                cell.temperature.text = "\(weather.temperature) ºC"
+            } else {
+                cell.weatherDescription.text = "Unknown condition"
+                cell.wind.text = ""
+                cell.temperature.text = ""
+            }
+            
+            return cell
         }
-        
-        return cell
+    }
+    
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return favouriteLocations.count
+        return section == 0 ? 1 : favouriteLocations.count
     }
     
     override func tableView(
             _ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 120.0
+        return indexPath.section == 0 ? 60.0 : 120.0
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -72,7 +84,7 @@ final class LocationsViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return true
+        return indexPath.section != 0
     }
 
     override func tableView(
