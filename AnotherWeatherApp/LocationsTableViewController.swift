@@ -9,14 +9,17 @@
 import UIKit
 
 
-final class LocationsViewController: UITableViewController {
+final class LocationsTableViewController: UITableViewController {
 
     private static let locationCellIdentifier = "LocationCell"
     
     private var favouriteLocations = [WeatherItem]() {
         didSet {
-            if favouriteLocations.count == 0 {
-                // TODO: show view hiting to search for locations
+            if let parent = parent as? MainViewController {
+                parent.summaryViewController?.infoLabel.text = favouriteLocations.count != 0 ?
+                    "Last update: \(String.currentDate())" :
+                    "No favourite locations found. " +
+                    "You can look for a location using the search button"
             }
         }
     }
@@ -33,7 +36,7 @@ final class LocationsViewController: UITableViewController {
     override func tableView(
             _ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(
-            withIdentifier: LocationsViewController.locationCellIdentifier, for: indexPath)
+            withIdentifier: LocationsTableViewController.locationCellIdentifier, for: indexPath)
             as! LocationTableViewCell
         
         let weatherDataForLocation = favouriteLocations[indexPath.row]
@@ -59,16 +62,6 @@ final class LocationsViewController: UITableViewController {
     override func tableView(
             _ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 120.0
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "SearchLocationSegue" {
-            let navigationController = segue.destination as! UINavigationController
-            if let searchLocationViewController =
-                    navigationController.viewControllers.first as? SearchLocationViewController {
-                searchLocationViewController.delegate = self
-            }
-        }
     }
     
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -97,20 +90,20 @@ final class LocationsViewController: UITableViewController {
 }
 
 
-extension LocationsViewController: SearchLocationViewControllerDelegate {
-    
+extension LocationsTableViewController: SearchLocationViewControllerDelegate {
+
     func locationItemWasSelected(location: LocationItem) {
         let weatherItem = WeatherItem(location: location)
         weatherItem.delegate = self
         favouriteLocations.append(weatherItem)
-        
+
         tableView.reloadData()
         updateWeatherInformation()
     }
 }
 
 
-extension LocationsViewController: WeatherItemDelegate {
+extension LocationsTableViewController: WeatherItemDelegate {
     func weatherWasUpdated(for item: WeatherItem) {
         tableView.reloadData()
     }
