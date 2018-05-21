@@ -18,13 +18,10 @@
 		624353AD20AF1F3A00FFD47A /* LocationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624353AC20AF1F3A00FFD47A /* LocationTableViewCell.swift */; };
 		624353B320AF272C00FFD47A /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624353B220AF272C00FFD47A /* LocationService.swift */; };
 		624353B520B0BE9F00FFD47A /* SearchLocationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624353B420B0BE9F00FFD47A /* SearchLocationTableViewCell.swift */; };
-		6290B27520B32C6E003E5531 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6290B27420B32C6E003E5531 /* MainViewController.swift */; };
-		6290B27720B35A4D003E5531 /* SummaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6290B27620B35A4D003E5531 /* SummaryViewController.swift */; };
 		62B6041520B0C20A00396889 /* LocationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B6041420B0C20A00396889 /* LocationItem.swift */; };
 		62B6041720B0CB0700396889 /* WeatherItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B6041620B0CB0700396889 /* WeatherItem.swift */; };
 		62B6041B20B0CFDF00396889 /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B6041A20B0CFDF00396889 /* HTTPClient.swift */; };
 		62B6041D20B1A26C00396889 /* ApixuAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B6041C20B1A26C00396889 /* ApixuAPI.swift */; };
-		62F636ED20B35CC900ED43E0 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F636EC20B35CC900ED43E0 /* String+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,13 +38,10 @@
 		624353AC20AF1F3A00FFD47A /* LocationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationTableViewCell.swift; sourceTree = "<group>"; };
 		624353B220AF272C00FFD47A /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 		624353B420B0BE9F00FFD47A /* SearchLocationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchLocationTableViewCell.swift; sourceTree = "<group>"; };
-		6290B27420B32C6E003E5531 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
-		6290B27620B35A4D003E5531 /* SummaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryViewController.swift; sourceTree = "<group>"; };
 		62B6041420B0C20A00396889 /* LocationItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationItem.swift; sourceTree = "<group>"; };
 		62B6041620B0CB0700396889 /* WeatherItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherItem.swift; sourceTree = "<group>"; };
 		62B6041A20B0CFDF00396889 /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
 		62B6041C20B1A26C00396889 /* ApixuAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApixuAPI.swift; sourceTree = "<group>"; };
-		62F636EC20B35CC900ED43E0 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,7 +74,6 @@
 		6243539020AEE09C00FFD47A /* AnotherWeatherApp */ = {
 			isa = PBXGroup;
 			children = (
-				62FDDEF920B35C980018DAA2 /* Utils */,
 				624353B120AF270E00FFD47A /* Services */,
 				624353AE20AF269200FFD47A /* Stories */,
 				6243539120AEE09C00FFD47A /* AppDelegate.swift */,
@@ -107,8 +100,6 @@
 			isa = PBXGroup;
 			children = (
 				62B6041620B0CB0700396889 /* WeatherItem.swift */,
-				6290B27420B32C6E003E5531 /* MainViewController.swift */,
-				6290B27620B35A4D003E5531 /* SummaryViewController.swift */,
 				624353A820AEFB6000FFD47A /* LocationsTableViewController.swift */,
 				624353AC20AF1F3A00FFD47A /* LocationTableViewCell.swift */,
 			);
@@ -149,14 +140,6 @@
 				62B6041A20B0CFDF00396889 /* HTTPClient.swift */,
 			);
 			name = Networking;
-			sourceTree = "<group>";
-		};
-		62FDDEF920B35C980018DAA2 /* Utils */ = {
-			isa = PBXGroup;
-			children = (
-				62F636EC20B35CC900ED43E0 /* String+Extension.swift */,
-			);
-			name = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -232,14 +215,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				6243539220AEE09C00FFD47A /* AppDelegate.swift in Sources */,
-				6290B27720B35A4D003E5531 /* SummaryViewController.swift in Sources */,
 				62B6041D20B1A26C00396889 /* ApixuAPI.swift in Sources */,
 				624353AD20AF1F3A00FFD47A /* LocationTableViewCell.swift in Sources */,
-				6290B27520B32C6E003E5531 /* MainViewController.swift in Sources */,
 				62B6041520B0C20A00396889 /* LocationItem.swift in Sources */,
 				62B6041B20B0CFDF00396889 /* HTTPClient.swift in Sources */,
 				624353B320AF272C00FFD47A /* LocationService.swift in Sources */,
-				62F636ED20B35CC900ED43E0 /* String+Extension.swift in Sources */,
 				624353B520B0BE9F00FFD47A /* SearchLocationTableViewCell.swift in Sources */,
 				6243539A20AEE09C00FFD47A /* AnotherWeatherApp.xcdatamodeld in Sources */,
 				624353A920AEFB6000FFD47A /* LocationsTableViewController.swift in Sources */,
