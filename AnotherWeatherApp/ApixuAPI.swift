@@ -40,7 +40,7 @@ struct ApixuAPI {
 
 
 struct WeatherResponse: Decodable {
-    let temperature: Int
+    let temperature: Double
     let condition: String
     let windSpeed: Double
     let windDirection: String
@@ -64,7 +64,7 @@ struct WeatherResponse: Decodable {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         let data = try container.nestedContainer(keyedBy: WeatherCodingKeys.self, forKey: .current)
         
-        temperature = try data.decode(Int.self, forKey: .temperature)
+        temperature = try data.decode(Double.self, forKey: .temperature)
         let conditionContainer = try data.nestedContainer(
             keyedBy: ConditionCodingKeys.self, forKey: .condition)
         condition = try conditionContainer.decode(String.self, forKey: .text)

@@ -44,5 +44,5 @@ struct WeatherCondition {
     let summary: String
     let windSpeed: Double
     let windDirection: String
-    let temperature: Int
+    let temperature: Double
 }
