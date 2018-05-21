@@ -25,6 +25,16 @@ final class LocationsViewController: UITableViewController {
             self, action: #selector(refreshWeatherData), for: UIControlEvents.valueChanged)
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "SearchLocationSegue" {
+            let navigationController = segue.destination as! UINavigationController
+            if let searchLocationViewController =
+                navigationController.viewControllers.first as? SearchLocationViewController {
+                searchLocationViewController.delegate = self
+            }
+        }
+    }
+    
     override func tableView(
             _ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
@@ -73,16 +83,6 @@ final class LocationsViewController: UITableViewController {
         return indexPath.section == 0 ? 60.0 : 120.0
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "SearchLocationSegue" {
-            let navigationController = segue.destination as! UINavigationController
-            if let searchLocationViewController =
-                    navigationController.viewControllers.first as? SearchLocationViewController {
-                searchLocationViewController.delegate = self
-            }
-        }
-    }
-    
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return indexPath.section != 0
     }
@@ -94,6 +94,15 @@ final class LocationsViewController: UITableViewController {
             favouriteLocations.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
+    }
+    
+    override func tableView(
+            _ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath,
+            to destinationIndexPath: IndexPath) {
+        let movedLocation = favouriteLocations[sourceIndexPath.row]
+        favouriteLocations.remove(at: sourceIndexPath.row)
+        favouriteLocations.insert(movedLocation, at: destinationIndexPath.row)
+        tableView.reloadData()
     }
     
     private func updateWeatherInformation() {
