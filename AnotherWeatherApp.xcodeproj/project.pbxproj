@@ -19,8 +19,8 @@
 		624353B320AF272C00FFD47A /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624353B220AF272C00FFD47A /* LocationService.swift */; };
 		624353B520B0BE9F00FFD47A /* SearchLocationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624353B420B0BE9F00FFD47A /* SearchLocationTableViewCell.swift */; };
 		6272026120B4B41300FD247F /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6272026020B4B41300FD247F /* CoreDataStack.swift */; };
-		62B6041520B0C20A00396889 /* LocationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B6041420B0C20A00396889 /* LocationItem.swift */; };
-		62B6041720B0CB0700396889 /* WeatherItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B6041620B0CB0700396889 /* WeatherItem.swift */; };
+		62B6041520B0C20A00396889 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B6041420B0C20A00396889 /* Location.swift */; };
+		62B6041720B0CB0700396889 /* LocationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B6041620B0CB0700396889 /* LocationItem.swift */; };
 		62B6041B20B0CFDF00396889 /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B6041A20B0CFDF00396889 /* HTTPClient.swift */; };
 		62B6041D20B1A26C00396889 /* ApixuAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B6041C20B1A26C00396889 /* ApixuAPI.swift */; };
 		62F636F020B3644E00ED43E0 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F636EF20B3644E00ED43E0 /* String+Extension.swift */; };
@@ -42,8 +42,8 @@
 		624353B220AF272C00FFD47A /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 		624353B420B0BE9F00FFD47A /* SearchLocationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchLocationTableViewCell.swift; sourceTree = "<group>"; };
 		6272026020B4B41300FD247F /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
-		62B6041420B0C20A00396889 /* LocationItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationItem.swift; sourceTree = "<group>"; };
-		62B6041620B0CB0700396889 /* WeatherItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherItem.swift; sourceTree = "<group>"; };
+		62B6041420B0C20A00396889 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		62B6041620B0CB0700396889 /* LocationItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationItem.swift; sourceTree = "<group>"; };
 		62B6041A20B0CFDF00396889 /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
 		62B6041C20B1A26C00396889 /* ApixuAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApixuAPI.swift; sourceTree = "<group>"; };
 		62F636EF20B3644E00ED43E0 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
@@ -106,7 +106,7 @@
 		624353AF20AF269A00FFD47A /* Favourite locations */ = {
 			isa = PBXGroup;
 			children = (
-				62B6041620B0CB0700396889 /* WeatherItem.swift */,
+				62B6041620B0CB0700396889 /* LocationItem.swift */,
 				624353A820AEFB6000FFD47A /* LocationsTableViewController.swift */,
 				624353AC20AF1F3A00FFD47A /* LocationTableViewCell.swift */,
 				62F636F120B3648D00ED43E0 /* InfoTableViewCell.swift */,
@@ -135,7 +135,7 @@
 		62B6041820B0CF0800396889 /* Location */ = {
 			isa = PBXGroup;
 			children = (
-				62B6041420B0C20A00396889 /* LocationItem.swift */,
+				62B6041420B0C20A00396889 /* Location.swift */,
 				624353B220AF272C00FFD47A /* LocationService.swift */,
 			);
 			name = Location;
@@ -243,7 +243,7 @@
 				6243539220AEE09C00FFD47A /* AppDelegate.swift in Sources */,
 				62B6041D20B1A26C00396889 /* ApixuAPI.swift in Sources */,
 				624353AD20AF1F3A00FFD47A /* LocationTableViewCell.swift in Sources */,
-				62B6041520B0C20A00396889 /* LocationItem.swift in Sources */,
+				62B6041520B0C20A00396889 /* Location.swift in Sources */,
 				62B6041B20B0CFDF00396889 /* HTTPClient.swift in Sources */,
 				624353B320AF272C00FFD47A /* LocationService.swift in Sources */,
 				6272026120B4B41300FD247F /* CoreDataStack.swift in Sources */,
@@ -252,7 +252,7 @@
 				6243539A20AEE09C00FFD47A /* AnotherWeatherApp.xcdatamodeld in Sources */,
 				624353A920AEFB6000FFD47A /* LocationsTableViewController.swift in Sources */,
 				624353AB20AEFC9300FFD47A /* SearchLocationViewController.swift in Sources */,
-				62B6041720B0CB0700396889 /* WeatherItem.swift in Sources */,
+				62B6041720B0CB0700396889 /* LocationItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

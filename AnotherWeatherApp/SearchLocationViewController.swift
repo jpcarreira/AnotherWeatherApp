@@ -11,7 +11,7 @@ import UIKit
 
 protocol SearchLocationViewControllerDelegate: class {
     
-    func locationItemWasSelected(location: LocationItem)
+    func locationItemWasSelected(location: Location)
 }
 
 
@@ -22,7 +22,7 @@ final class SearchLocationViewController: UITableViewController {
     weak var delegate: SearchLocationViewControllerDelegate?
     
     // data source for the table view
-    var foundLocations = [LocationItem]() {
+    var foundLocations = [Location]() {
         didSet {
            tableView.reloadData()
         }

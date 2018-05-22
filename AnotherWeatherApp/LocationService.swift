@@ -13,7 +13,7 @@ struct LocationService {
     
     static func lookFor(
             _ place: String?,
-            completion: @escaping (_ success: Bool, _ results: [LocationItem]?) -> Void ){
+            completion: @escaping (_ success: Bool, _ results: [Location]?) -> Void ){
         guard let _ = place else {
            return
         }
@@ -30,10 +30,10 @@ struct LocationService {
                 print("No matches found")
                 completion(false, nil)
             } else {
-                var locations = [LocationItem]()
+                var locations = [Location]()
                 for item in response!.mapItems {
                     if let locationName = item.name {
-                        let locationItem = LocationItem(
+                        let locationItem = Location(
                             name: locationName,
                             latitude: item.placemark.coordinate.latitude,
                             longitude: item.placemark.coordinate.longitude)

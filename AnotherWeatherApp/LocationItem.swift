@@ -6,8 +6,43 @@
 //  Copyright © 2018 João Carreira. All rights reserved.
 //
 
-struct LocationItem {
-    let name: String
-    let latitude: Double
-    let longitude: Double
+protocol LocationItemDelegate: class {
+    
+    func weatherWasUpdated(for item: LocationItem)
+}
+
+
+final class LocationItem {
+    let location: Location
+    var weather: WeatherCondition?
+    
+    weak var delegate: LocationItemDelegate?
+    
+    init(location: Location, weather: WeatherCondition? = nil) {
+        self.location = location
+        self.weather = weather
+    }
+    
+    func updateWeatherCondition() {
+        ApixuAPI.getCurrentWeather(for: location) { success, weatherResponse in
+            if success, let weatherResponse = weatherResponse {
+                let weatherCondition = WeatherCondition(
+                    summary: weatherResponse.condition,
+                    windSpeed: weatherResponse.windSpeed,
+                    windDirection: weatherResponse.windDirection,
+                    temperature: weatherResponse.temperature)
+                self.weather = weatherCondition
+    
+                self.delegate?.weatherWasUpdated(for: self)
+            }
+        }
+    }
+}
+
+
+struct WeatherCondition {
+    let summary: String
+    let windSpeed: Double
+    let windDirection: String
+    let temperature: Double
 }

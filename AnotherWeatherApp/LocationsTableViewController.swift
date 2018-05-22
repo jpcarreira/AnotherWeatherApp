@@ -17,7 +17,7 @@ final class LocationsTableViewController: UITableViewController {
     
     var managedObjectContext: NSManagedObjectContext!
     
-    private var favouriteLocations = [WeatherItem]()
+    private var favouriteLocations = [LocationItem]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -123,8 +123,8 @@ final class LocationsTableViewController: UITableViewController {
 
 extension LocationsTableViewController: SearchLocationViewControllerDelegate {
     
-    func locationItemWasSelected(location: LocationItem) {
-        let weatherItem = WeatherItem(location: location)
+    func locationItemWasSelected(location: Location) {
+        let weatherItem = LocationItem(location: location)
         weatherItem.delegate = self
         favouriteLocations.append(weatherItem)
         
@@ -134,8 +134,8 @@ extension LocationsTableViewController: SearchLocationViewControllerDelegate {
 }
 
 
-extension LocationsTableViewController: WeatherItemDelegate {
-    func weatherWasUpdated(for item: WeatherItem) {
+extension LocationsTableViewController: LocationItemDelegate {
+    func weatherWasUpdated(for item: LocationItem) {
         tableView.reloadData()
     }
 }

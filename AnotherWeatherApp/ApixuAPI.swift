@@ -15,7 +15,7 @@ struct ApixuAPI {
     private static let apiKey = "af6d9b9891ce410c868190219181705"
     
     static func getCurrentWeather(
-            for location: LocationItem, completionHandler: @escaping (Bool, WeatherResponse?) -> Void) {
+            for location: Location, completionHandler: @escaping (Bool, WeatherResponse?) -> Void) {
         
         HTTPClient.get(from: buildUrl(given: location)) { (json, error) in
             if error == nil {
@@ -32,7 +32,7 @@ struct ApixuAPI {
         }
     }
     
-    private static func buildUrl(given location: LocationItem) -> URL {
+    private static func buildUrl(given location: Location) -> URL {
         return URL(string: "\(ApixuAPI.baseUrl)?key=\(ApixuAPI.apiKey)&q=\(location.latitude)," +
             "\(location.longitude)")!
     }
