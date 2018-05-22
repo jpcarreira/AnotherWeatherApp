@@ -7,12 +7,15 @@
 //
 
 import UIKit
+import CoreData
 
 
-final class LocationsViewController: UITableViewController {
+final class LocationsTableViewController: UITableViewController {
 
     private static let infoCellIdentifier = "InfoCell"
     private static let locationCellIdentifier = "LocationCell"
+    
+    var managedObjectContext: NSManagedObjectContext!
     
     private var favouriteLocations = [WeatherItem]()
     
@@ -39,7 +42,7 @@ final class LocationsViewController: UITableViewController {
             _ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(
-                withIdentifier: LocationsViewController.infoCellIdentifier, for: indexPath)
+                withIdentifier: LocationsTableViewController.infoCellIdentifier, for: indexPath)
                 as! InfoTableViewCell
             
             cell.infoLabel.text = favouriteLocations.count != 0 ?
@@ -50,7 +53,7 @@ final class LocationsViewController: UITableViewController {
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(
-                withIdentifier: LocationsViewController.locationCellIdentifier, for: indexPath)
+                withIdentifier: LocationsTableViewController.locationCellIdentifier, for: indexPath)
                 as! LocationTableViewCell
             
             let weatherDataForLocation = favouriteLocations[indexPath.row]
@@ -118,7 +121,7 @@ final class LocationsViewController: UITableViewController {
 }
 
 
-extension LocationsViewController: SearchLocationViewControllerDelegate {
+extension LocationsTableViewController: SearchLocationViewControllerDelegate {
     
     func locationItemWasSelected(location: LocationItem) {
         let weatherItem = WeatherItem(location: location)
@@ -131,7 +134,7 @@ extension LocationsViewController: SearchLocationViewControllerDelegate {
 }
 
 
-extension LocationsViewController: WeatherItemDelegate {
+extension LocationsTableViewController: WeatherItemDelegate {
     func weatherWasUpdated(for item: WeatherItem) {
         tableView.reloadData()
     }
