@@ -97,8 +97,8 @@ final class LocationsTableViewController: UITableViewController {
         forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             favouriteLocations.remove(at: indexPath.row)
-            delete(locationAt: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
+            reloadDataAndSave()
         }
     }
     
@@ -108,7 +108,7 @@ final class LocationsTableViewController: UITableViewController {
         let movedLocation = favouriteLocations[sourceIndexPath.row]
         favouriteLocations.remove(at: sourceIndexPath.row)
         favouriteLocations.insert(movedLocation, at: destinationIndexPath.row)
-        tableView.reloadData()
+        reloadDataAndSave()
     }
     
     private func updateWeatherInformation() {
@@ -120,6 +120,11 @@ final class LocationsTableViewController: UITableViewController {
     @objc private func refreshWeatherData() {
         updateWeatherInformation()
         refreshControl?.endRefreshing()
+    }
+    
+    private func reloadDataAndSave() {
+        tableView.reloadData()
+        saveData()
     }
     
     private func loadData() {
@@ -143,6 +148,17 @@ final class LocationsTableViewController: UITableViewController {
     }
     
     private func saveData() {
+        let fetchRequest: NSFetchRequest<NSFetchRequestResult> =
+            NSFetchRequest(entityName: "FavouriteLocation")
+        let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+        
+        do {
+            try managedObjectContext.persistentStoreCoordinator?.execute(
+                deleteRequest, with: managedObjectContext)
+        } catch let error as NSError {
+             print("Fetch error: \(error) description: \(error.userInfo)")
+        }
+        
         for location in favouriteLocations {
             let favouriteLocation = FavouriteLocation(context: managedObjectContext)
             favouriteLocation.location = location.location
@@ -155,18 +171,6 @@ final class LocationsTableViewController: UITableViewController {
             }
         }
     }
-    
-    private func delete(locationAt index: Int) {
-        let fecthRequest: NSFetchRequest<FavouriteLocation> = FavouriteLocation.fetchRequest()
-        do {
-            let results = try managedObjectContext.fetch(fecthRequest)
-            let locationToRemove = results[index]
-            managedObjectContext.delete(locationToRemove)
-            try managedObjectContext.save()
-        } catch let error as NSError {
-            print("Fetch error: \(error) description: \(error.userInfo)")
-        }
-    }
 }
 
 
@@ -176,8 +180,8 @@ extension LocationsTableViewController: SearchLocationViewControllerDelegate {
         weatherItem.delegate = self
         favouriteLocations.append(weatherItem)
         
-        tableView.reloadData()
         updateWeatherInformation()
+        reloadDataAndSave()
     }
 }
 
@@ -185,8 +189,7 @@ extension LocationsTableViewController: SearchLocationViewControllerDelegate {
 extension LocationsTableViewController: LocationItemDelegate {
     func weatherWasUpdated(for item: LocationItem) {
         DispatchQueue.main.async {
-            self.tableView.reloadData()
-            self.saveData()
+            self.reloadDataAndSave()
         }
     }
 }
