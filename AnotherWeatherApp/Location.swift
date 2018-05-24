@@ -9,7 +9,7 @@
 import Foundation
 
 
-class Location: NSCoding {
+class Location: NSObject, NSCoding {
     let name: String
     let latitude: Double
     let longitude: Double

@@ -8,7 +8,7 @@
 
 import Foundation
 
-class WeatherCondition: NSCoding {
+class WeatherCondition: NSObject, NSCoding {
     let summary: String
     let windSpeed: Double
     let windDirection: String

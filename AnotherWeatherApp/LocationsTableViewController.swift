@@ -26,6 +26,8 @@ final class LocationsTableViewController: UITableViewController {
         
         refreshControl?.addTarget(
             self, action: #selector(refreshWeatherData), for: UIControlEvents.valueChanged)
+        
+        loadData()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -95,6 +97,7 @@ final class LocationsTableViewController: UITableViewController {
         forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             favouriteLocations.remove(at: indexPath.row)
+            delete(locationAt: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
     }
@@ -118,11 +121,56 @@ final class LocationsTableViewController: UITableViewController {
         updateWeatherInformation()
         refreshControl?.endRefreshing()
     }
+    
+    private func loadData() {
+        let fecthRequest: NSFetchRequest<FavouriteLocation> = FavouriteLocation.fetchRequest()
+        do {
+            let results = try managedObjectContext.fetch(fecthRequest)
+            if results.count > 0 {
+                favouriteLocations.removeAll()
+                for favouriteLocation in results {
+                    guard let location = favouriteLocation.location else {
+                            return
+                    }
+                    
+                    favouriteLocations.append(
+                        LocationItem(location: location, weather: favouriteLocation.weather))
+                }
+            }
+        } catch let error as NSError {
+            print("Fetch error: \(error) description: \(error.userInfo)")
+        }
+    }
+    
+    private func saveData() {
+        for location in favouriteLocations {
+            let favouriteLocation = FavouriteLocation(context: managedObjectContext)
+            favouriteLocation.location = location.location
+            favouriteLocation.weather = location.weather
+            
+            do {
+               try managedObjectContext.save()
+            } catch let error as NSError {
+                print("Fetch error: \(error) description: \(error.userInfo)")
+            }
+        }
+    }
+    
+    private func delete(locationAt index: Int) {
+        let fecthRequest: NSFetchRequest<FavouriteLocation> = FavouriteLocation.fetchRequest()
+        do {
+            let results = try managedObjectContext.fetch(fecthRequest)
+            let locationToRemove = results[index]
+            managedObjectContext.delete(locationToRemove)
+            try managedObjectContext.save()
+        } catch let error as NSError {
+            print("Fetch error: \(error) description: \(error.userInfo)")
+        }
+    }
 }
 
 
 extension LocationsTableViewController: SearchLocationViewControllerDelegate {
-    
     func locationItemWasSelected(location: Location) {
         let weatherItem = LocationItem(location: location)
         weatherItem.delegate = self
@@ -136,6 +184,9 @@ extension LocationsTableViewController: SearchLocationViewControllerDelegate {
 
 extension LocationsTableViewController: LocationItemDelegate {
     func weatherWasUpdated(for item: LocationItem) {
-        tableView.reloadData()
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+            self.saveData()
+        }
     }
 }
