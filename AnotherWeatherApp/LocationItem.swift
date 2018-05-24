@@ -6,13 +6,16 @@
 //  Copyright © 2018 João Carreira. All rights reserved.
 //
 
+import Foundation
+
+
 protocol LocationItemDelegate: class {
     
     func weatherWasUpdated(for item: LocationItem)
 }
 
 
-final class LocationItem {
+final class LocationItem: NSCoding {
     let location: Location
     var weather: WeatherCondition?
     
@@ -37,12 +40,29 @@ final class LocationItem {
             }
         }
     }
-}
-
-
-struct WeatherCondition {
-    let summary: String
-    let windSpeed: Double
-    let windDirection: String
-    let temperature: Double
+    
+    // NSCoding
+    
+    private enum CodingKeys: String {
+        case location
+        case weather
+    }
+    
+    func encode(with aCoder: NSCoder) {
+        aCoder.encode(location, forKey: CodingKeys.location.rawValue)
+        aCoder.encode(weather, forKey: CodingKeys.weather.rawValue)
+    }
+    
+    convenience required init?(coder aDecoder: NSCoder) {
+        guard let location = aDecoder.decodeObject(
+            forKey: CodingKeys.location.rawValue) as? Location else {
+            return nil
+        }
+        guard let weather = aDecoder.decodeObject(
+            forKey: CodingKeys.weather.rawValue) as? WeatherCondition else {
+            return nil
+        }
+        
+        self.init(location: location, weather: weather)
+    }
 }
