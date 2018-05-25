@@ -31,6 +31,7 @@ final class LocationItem: NSCoding {
             if success, let weatherResponse = weatherResponse {
                 let weatherCondition = WeatherCondition(
                     summary: weatherResponse.condition,
+                    icon: weatherResponse.iconUrl,
                     windSpeed: weatherResponse.windSpeed,
                     windDirection: weatherResponse.windDirection,
                     temperature: weatherResponse.temperature)

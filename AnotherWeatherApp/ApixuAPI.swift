@@ -42,6 +42,7 @@ struct ApixuAPI {
 struct WeatherResponse: Decodable {
     let temperature: Double
     let condition: String
+    let iconUrl: String
     let windSpeed: Double
     let windDirection: String
     
@@ -58,6 +59,7 @@ struct WeatherResponse: Decodable {
     
     enum ConditionCodingKeys: String, CodingKey {
         case text
+        case iconUrl = "icon"
     }
     
     init(from decoder: Decoder) throws {
@@ -68,6 +70,7 @@ struct WeatherResponse: Decodable {
         let conditionContainer = try data.nestedContainer(
             keyedBy: ConditionCodingKeys.self, forKey: .condition)
         condition = try conditionContainer.decode(String.self, forKey: .text)
+        iconUrl = try conditionContainer.decode(String.self, forKey: .iconUrl)
         windSpeed = try data.decode(Double.self, forKey: .windSpeed)
         windDirection = try data.decode(String.self, forKey: .windDirection)
     }

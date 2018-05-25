@@ -63,6 +63,7 @@ final class LocationsTableViewController: UITableViewController {
             cell.location.text = weatherDataForLocation.location.name
             if let weather = weatherDataForLocation.weather {
                 cell.weatherDescription.text = weather.summary
+                cell.conditionImageView.image = UIImage(named: weather.icon)
                 cell.wind.text = "\(weather.windDirection) \(weather.windSpeed) km/hr"
                 cell.temperature.text = "\(weather.temperature) ºC"
             } else {
@@ -85,7 +86,7 @@ final class LocationsTableViewController: UITableViewController {
     
     override func tableView(
             _ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return indexPath.section == 0 ? 60.0 : 120.0
+        return indexPath.section == 0 ? 80.0 : 140.0
     }
     
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -113,13 +114,15 @@ final class LocationsTableViewController: UITableViewController {
     
     private func updateWeatherInformation() {
         for location in favouriteLocations {
+            if location.delegate == nil {
+                location.delegate = self
+            }
             location.updateWeatherCondition()
         }
     }
     
     @objc private func refreshWeatherData() {
         updateWeatherInformation()
-        refreshControl?.endRefreshing()
     }
     
     private func reloadDataAndSave() {
@@ -190,6 +193,9 @@ extension LocationsTableViewController: LocationItemDelegate {
     func weatherWasUpdated(for item: LocationItem) {
         DispatchQueue.main.async {
             self.reloadDataAndSave()
+            if let _ = self.refreshControl?.isRefreshing {
+                self.refreshControl?.endRefreshing()
+            }
         }
     }
 }

@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="bHM-p3-ays">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -11,82 +15,92 @@
             <objects>
                 <tableViewController id="WYV-dm-bzL" customClass="LocationsTableViewController" customModule="AnotherWeatherApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="XXx-c0-aFa">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="InfoCell" rowHeight="114" id="gpv-l2-mnd" customClass="InfoTableViewCell" customModule="AnotherWeatherApp" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="600" height="114"/>
+                                <rect key="frame" x="0.0" y="28" width="375" height="114"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="gpv-l2-mnd" id="fOg-iw-WI8">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="113.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="113.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Info label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eRB-Gi-2EI">
-                                            <rect key="frame" x="36" y="47" width="528" height="20.5"/>
+                                            <rect key="frame" x="20" y="15" width="335" height="84"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstAttribute="trailingMargin" secondItem="eRB-Gi-2EI" secondAttribute="trailing" constant="16" id="TaV-uc-QJ3"/>
-                                        <constraint firstItem="eRB-Gi-2EI" firstAttribute="centerY" secondItem="fOg-iw-WI8" secondAttribute="centerY" id="d8F-tZ-Jlh"/>
-                                        <constraint firstItem="eRB-Gi-2EI" firstAttribute="centerX" secondItem="fOg-iw-WI8" secondAttribute="centerX" id="r7e-vz-wwF"/>
-                                        <constraint firstItem="eRB-Gi-2EI" firstAttribute="leading" secondItem="fOg-iw-WI8" secondAttribute="leadingMargin" constant="16" id="zCC-bM-h5K"/>
+                                        <constraint firstItem="eRB-Gi-2EI" firstAttribute="leading" secondItem="fOg-iw-WI8" secondAttribute="leadingMargin" constant="4" id="2He-S2-mUI"/>
+                                        <constraint firstItem="eRB-Gi-2EI" firstAttribute="top" secondItem="fOg-iw-WI8" secondAttribute="topMargin" constant="4" id="BCR-ZD-e6s"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="eRB-Gi-2EI" secondAttribute="trailing" constant="4" id="VYu-mq-A3W"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="eRB-Gi-2EI" secondAttribute="bottom" constant="4" id="sen-hd-4ME"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="infoLabel" destination="eRB-Gi-2EI" id="Gzl-7t-1j7"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="LocationCell" rowHeight="114" id="2pM-gB-JJ6" customClass="LocationTableViewCell" customModule="AnotherWeatherApp" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="142" width="600" height="114"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="LocationCell" rowHeight="137" id="2pM-gB-JJ6" customClass="LocationTableViewCell" customModule="AnotherWeatherApp" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="142" width="375" height="137"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="2pM-gB-JJ6" id="s8f-8R-tPz">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="113.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="136.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lisbon" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cRQ-Ra-P80">
-                                            <rect key="frame" x="36" y="46.5" width="51" height="20.5"/>
+                                            <rect key="frame" x="32" y="27" width="51" height="33"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="22º C" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="orE-sW-nYU">
-                                            <rect key="frame" x="511" y="39" width="73" height="36"/>
+                                            <rect key="frame" x="286" y="50.5" width="73" height="36"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Partly clouded" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oLi-ha-PNy">
-                                            <rect key="frame" x="245" y="16" width="110.5" height="20.5"/>
+                                            <rect key="frame" x="132.5" y="16" width="110.5" height="20.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SSE 13 km/hr" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hvi-dE-xQM">
-                                            <rect key="frame" x="245" y="66.5" width="102" height="20.5"/>
+                                            <rect key="frame" x="136.5" y="89.5" width="102" height="20.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="116" translatesAutoresizingMaskIntoConstraints="NO" id="oKy-tA-Rct">
+                                            <rect key="frame" x="32" y="66" width="60" height="60"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="60" id="bpF-t1-7k8"/>
+                                                <constraint firstAttribute="width" constant="60" id="oaY-Qx-3Op"/>
+                                            </constraints>
+                                        </imageView>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="oLi-ha-PNy" firstAttribute="top" secondItem="s8f-8R-tPz" secondAttribute="top" constant="16" id="95E-kR-QO6"/>
                                         <constraint firstItem="oLi-ha-PNy" firstAttribute="centerX" secondItem="s8f-8R-tPz" secondAttribute="centerX" id="EEC-gT-FYQ"/>
                                         <constraint firstItem="orE-sW-nYU" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="s8f-8R-tPz" secondAttribute="leading" constant="20" symbolic="YES" id="Fa7-mP-Gwm"/>
+                                        <constraint firstItem="oKy-tA-Rct" firstAttribute="leading" secondItem="s8f-8R-tPz" secondAttribute="leadingMargin" constant="16" id="P0Q-1s-L7E"/>
                                         <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="cRQ-Ra-P80" secondAttribute="trailingMargin" id="SJd-hg-ueP"/>
+                                        <constraint firstItem="Hvi-dE-xQM" firstAttribute="centerX" secondItem="s8f-8R-tPz" secondAttribute="centerX" id="dGg-dG-Eva"/>
+                                        <constraint firstItem="cRQ-Ra-P80" firstAttribute="top" secondItem="s8f-8R-tPz" secondAttribute="topMargin" constant="16" id="ejc-Ue-1Gf"/>
+                                        <constraint firstItem="oKy-tA-Rct" firstAttribute="bottom" secondItem="s8f-8R-tPz" secondAttribute="bottomMargin" id="iXf-EJ-G3B"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="Hvi-dE-xQM" secondAttribute="bottom" constant="16" id="iz0-LB-lUb"/>
+                                        <constraint firstItem="oKy-tA-Rct" firstAttribute="top" secondItem="cRQ-Ra-P80" secondAttribute="bottom" constant="6" id="ntU-Wu-kyh"/>
                                         <constraint firstAttribute="trailing" secondItem="orE-sW-nYU" secondAttribute="trailing" constant="16" id="oZU-7h-Ea1"/>
-                                        <constraint firstItem="Hvi-dE-xQM" firstAttribute="leading" secondItem="oLi-ha-PNy" secondAttribute="leading" id="onB-Bo-pqM"/>
-                                        <constraint firstItem="cRQ-Ra-P80" firstAttribute="centerY" secondItem="s8f-8R-tPz" secondAttribute="centerY" id="sTb-MN-XLq"/>
                                         <constraint firstItem="orE-sW-nYU" firstAttribute="centerY" secondItem="s8f-8R-tPz" secondAttribute="centerY" id="uMH-tz-vXI"/>
-                                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Hvi-dE-xQM" secondAttribute="trailing" constant="20" symbolic="YES" id="vEx-Y7-zAw"/>
                                         <constraint firstItem="cRQ-Ra-P80" firstAttribute="leading" secondItem="s8f-8R-tPz" secondAttribute="leadingMargin" constant="16" id="wJO-nn-oWs"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="conditionImageView" destination="oKy-tA-Rct" id="mL0-Pn-zrJ"/>
                                     <outlet property="location" destination="cRQ-Ra-P80" id="PLC-zc-y8H"/>
                                     <outlet property="temperature" destination="orE-sW-nYU" id="eiv-hz-aNz"/>
                                     <outlet property="weatherDescription" destination="oLi-ha-PNy" id="RDw-4X-sif"/>
@@ -123,19 +137,19 @@
             <objects>
                 <tableViewController id="u0v-bx-AzT" customClass="SearchLocationViewController" customModule="AnotherWeatherApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="cSY-PB-5vN">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="LocationSearchCell" id="cUW-sd-Awr" customClass="SearchLocationTableViewCell" customModule="AnotherWeatherApp" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="cUW-sd-Awr" id="dA4-8C-hHs">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lisboa" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tCP-HG-1e0">
-                                            <rect key="frame" x="274.5" y="11" width="51" height="21"/>
+                                            <rect key="frame" x="162" y="11" width="51" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -203,4 +217,7 @@
             <point key="canvasLocation" x="1221.5999999999999" y="2.2488755622188905"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="116" width="32" height="32"/>
+    </resources>
 </document>
