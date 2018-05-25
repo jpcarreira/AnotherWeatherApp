@@ -24,10 +24,14 @@ struct LocationService {
         
         MKLocalSearch(request: request).start(completionHandler: { (response, error) in
             if error != nil {
-                print("Error occurred in search:\(error!.localizedDescription)")
+                #if DEBUG
+                    print("Error occurred in search:\(error!.localizedDescription)")
+                #endif
                 completion(false, nil)
             } else if response!.mapItems.count == 0 {
-                print("No matches found")
+                #if DEBUG
+                    print("No matches found")
+                #endif
                 completion(false, nil)
             } else {
                 var locations = [Location]()

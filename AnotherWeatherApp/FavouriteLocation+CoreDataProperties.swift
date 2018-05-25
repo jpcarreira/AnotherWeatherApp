@@ -14,7 +14,7 @@ import CoreData
 extension FavouriteLocation {
 
     @nonobjc public class func fetchRequest() -> NSFetchRequest<FavouriteLocation> {
-        return NSFetchRequest<FavouriteLocation>(entityName: "FavouriteLocation")
+        return NSFetchRequest<FavouriteLocation>(entityName: FavouriteLocation.entityName)
     }
 
     @NSManaged var location: Location?

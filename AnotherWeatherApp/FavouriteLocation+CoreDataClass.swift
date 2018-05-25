@@ -13,4 +13,5 @@ import CoreData
 @objc(FavouriteLocation)
 public class FavouriteLocation: NSManagedObject {
 
+    static let entityName = "FavouriteLocation"
 }

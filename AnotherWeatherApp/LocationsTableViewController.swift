@@ -146,20 +146,20 @@ final class LocationsTableViewController: UITableViewController {
                 }
             }
         } catch let error as NSError {
-            print("Fetch error: \(error) description: \(error.userInfo)")
+            fatalError("Fetch error: \(error) description: \(error.userInfo)")
         }
     }
     
     private func saveData() {
         let fetchRequest: NSFetchRequest<NSFetchRequestResult> =
-            NSFetchRequest(entityName: "FavouriteLocation")
+            NSFetchRequest(entityName: FavouriteLocation.entityName)
         let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
         
         do {
             try managedObjectContext.persistentStoreCoordinator?.execute(
                 deleteRequest, with: managedObjectContext)
         } catch let error as NSError {
-             print("Fetch error: \(error) description: \(error.userInfo)")
+             fatalError("Fetch error: \(error) description: \(error.userInfo)")
         }
         
         for location in favouriteLocations {
@@ -170,7 +170,7 @@ final class LocationsTableViewController: UITableViewController {
             do {
                try managedObjectContext.save()
             } catch let error as NSError {
-                print("Fetch error: \(error) description: \(error.userInfo)")
+                fatalError("Fetch error: \(error) description: \(error.userInfo)")
             }
         }
     }
